@@ -5,7 +5,6 @@ namespace bossit\sentry;
 use Sentry\Severity;
 use Sentry\State\Scope;
 use Throwable;
-use Yii;
 use yii\log\Logger;
 use yii\log\Target;
 use function Sentry\captureException;
@@ -27,6 +26,7 @@ class SentryTarget extends Target
 
     public function export(): void
     {
+
         foreach ($this->messages as $message) {
             [$text, $level, $category, $timestamp, $traces] = $message;
 
@@ -34,10 +34,6 @@ class SentryTarget extends Target
                 $scope->setLevel(static::getLevelName($level));
                 $scope->setTag('category', $category);
                 $scope->setTag('env', YII_ENV);
-
-                if (($user = Yii::$app->user->identity) !== null) {
-                    $scope->setUser(['id' => $user->id, 'email' => $user->email]);
-                }
             });
 
             if ($text instanceof Throwable) {
