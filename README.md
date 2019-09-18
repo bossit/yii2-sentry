@@ -1,1 +1,1 @@
-# yii2-sentry
+# yii2-sentry-logger

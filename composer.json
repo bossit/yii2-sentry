@@ -1,0 +1,31 @@
+{
+  "name": "bossit/yii2-sentry-logger",
+  "description": "Yii2 SDK for Sentry (https://sentry.io)",
+  "keywords": [
+    "sentry",
+    "yii2",
+    "log",
+    "logging",
+    "error-monitoring",
+    "error-handler",
+    "crash-reporting",
+    "crash-reports"
+  ],
+  "type": "extension",
+  "require": {
+    "php": "^7.1",
+    "yiisoft/yii2": "~2.0.0",
+    "sentry/sdk": "^2.0"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "bossit\\sentry\\": "src"
+    }
+  }
+}
