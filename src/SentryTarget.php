@@ -26,19 +26,17 @@ class SentryTarget extends Target
 
     public function export(): void
     {
-
         foreach ($this->messages as $message) {
             [$text, $level, $category, $timestamp, $traces] = $message;
 
             configureScope(static function (Scope $scope) use ($level, $category): void {
                 $scope->setLevel(static::getLevelName($level));
                 $scope->setTag('category', $category);
-                $scope->setTag('env', YII_ENV);
+                $scope->setTag('environment', YII_ENV);
             });
 
             if ($text instanceof Throwable) {
                 captureException($text);
-
                 continue;
             }
 
